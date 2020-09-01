@@ -15,15 +15,17 @@ class RegistrationRoute extends Component {
 
   render() {
     return (
-      <section>
-        <p>
-          Practice learning a language with the spaced reptition revision technique.
+      <div className ='reg_wrap'>
+        <p className='reg_intro'>
+          Practice learning a language with the Codificación reptition revision technique.
         </p>
-        <h2>Sign up</h2>
-        <RegistrationForm
-          onRegistrationSuccess={this.handleRegistrationSuccess}
-        />
-      </section>
+          <section className='reg_log_form_wrap'>
+            <h2 className='reg_log_header'>Sign up</h2>
+            <RegistrationForm
+              onRegistrationSuccess={this.handleRegistrationSuccess}
+            />
+          </section>
+      </div>
     );
   }
 }
