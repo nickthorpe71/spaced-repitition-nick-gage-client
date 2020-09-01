@@ -193,7 +193,7 @@ input{
 
 .left_col{
   background-color: #E53C38;
-  color: #FBEBD8;
+  color: #FFFFFF;
   width: 60%;
   padding: 0.3rem;
 
@@ -203,6 +203,7 @@ input{
   width: 40%;
   display: flex;
   margin-left: 0;
+  align-items: center;
 }
 
 .word_list{
@@ -220,7 +221,6 @@ input{
   color: #E53C38;
   margin: 0;
   height: 8rem;
-  width: 8rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -251,3 +251,18 @@ input{
 /*****************************************************************************/
 /*****************************************************************************/
 /*****************************************************************************/
+
+@media only screen and (min-width : 800px){
+  body{
+    max-width:800px;
+    margin: auto;
+  }
+  .dash_col{
+    margin: 2rem 5rem 0 5rem;
+  }
+  .reg_log_form_wrap{
+    margin: auto;
+    margin-top: 2rem;
+    padding: .2rem 6.5rem .2rem 2rem ;
+  }
+}
