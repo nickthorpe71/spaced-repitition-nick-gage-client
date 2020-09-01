@@ -38,14 +38,21 @@ class DashboardRoute extends Component {
   render() {
     const { name, total_score } = this.context.language;
     return (
-      <section>
-        <h2 className="language_header">{name}</h2>
+      <section id="dashboard">
+        <div className="dash_col">
+
+        </div>
+        <div className="dash_col">
+
+        </div>
         <p>{`Total correct answers: ${total_score}`}</p>
         <Link to='/learn'><button>Start practicing</button></Link>
         <h3>Words to practice</h3>
         <ul>
           {this.rednerWords()}
         </ul>
+
+        <h2 className="language_header">{name}</h2>
       </section>
     );
   }
