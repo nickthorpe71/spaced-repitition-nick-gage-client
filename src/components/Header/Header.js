@@ -30,20 +30,20 @@ class Header extends Component {
 
   renderLoginLink() {
     return (
-      <nav>
-        <Link to='/login'>Login</Link>
-        {' '}
-        <Link to='/register'>Sign up</Link>
+      <nav className='login_nav_wrapper'>
+        <div className=''><Link to='/login' className='login_link'>Login</Link></div>
+
+        <div className=''><Link to='/register' className='sign_up_link'>Sign up</Link></div>
       </nav>
     )
   }
 
   render() {
     return (
-      <header>
+      <header className='header_nav'>
         <h1>
-          <Link to='/'>
-            Spaced repetition
+          <Link to='/' className='Header_logo'>
+            Codificación repetition
           </Link>
         </h1>
         {TokenService.hasAuthToken()
