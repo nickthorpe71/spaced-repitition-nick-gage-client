@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import LanguageContext from '../../contexts/LanguageContext';
 import LanguageApiService from '../../services/language-api-service';
 
@@ -19,12 +20,32 @@ class DashboardRoute extends Component {
       });
   }
 
-  render() {
-    const { name } = this.context.language;
+  rednerWords = () => {
+    const words = this.context.words;
+    return words.map(word => {
+      return (
+        <li key={word.id}>
+          <h4>{word.original}</h4>
+          <div>
+            <div><span>{`correct answer count: ${word.correct_count}`}</span></div>
+            <div><span>{`incorrect answer count: ${word.incorrect_count}`}</span></div>
+          </div>
+        </li>
+      );
+    });
+  };
 
+  render() {
+    const { name, total_score } = this.context.language;
     return (
       <section>
         <h2 className="language_header">{name}</h2>
+        <p>{`Total correct answers: ${total_score}`}</p>
+        <Link to='/learn'><button>Start practicing</button></Link>
+        <h3>Words to practice</h3>
+        <ul>
+          {this.rednerWords()}
+        </ul>
       </section>
     );
   }
