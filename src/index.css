@@ -30,6 +30,7 @@ font-family: 'Mukta', sans-serif;
 * {
   box-sizing: border-box;
   font-family:  'Mallanna', sans-serif;
+  width:  100%;
 }
 
 
@@ -41,11 +42,13 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: #FFFAEF ;
   display: flex;
+
 }
 
 :root {
   --font-size: calc(10px + 1vmin);
 }
+
 
 
 
@@ -136,7 +139,7 @@ input{
 
 }
 
-.Button{
+.Button {
   border: none;
   border-radius: .3vh;
   background-color: #FFFAEF;
@@ -175,12 +178,75 @@ input{
 /******************   DASHBOARD   ********************************/
 /*****************************************************************/
 
+#dashboard{
+ display: flex;
+ flex-direction: row;
+ margin: 0;
+
+}
+
+.dash_col{
+  display: flex;
+  flex-direction: column;
+ margin: 0.5rem;
+}
+
+.left_col{
+  background-color: #E53C38;
+  color: #FBEBD8;
+  width: 60%;
+  padding: 0.3rem;
+
+}
+
+.right_col{
+  width: 40%;
+  display: flex;
+  margin-left: 0;
+}
+
+.word_list{
+  list-style: none;
+  margin: 0;
+  padding: 0 .7rem 0 .7rem;
+  font-size: .8rem;
+}
+.word_list > li {
+  margin: 0;
+}
+
 .language_header{
   background-color: #FBEBD8;
   color: #E53C38;
+  margin: 0;
   height: 8rem;
   width: 8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+
+.total_count_text{
+  color: #d11d27 ;
+  font-size: 1.2rem;
+  margin: 1rem 0 1rem 0;
+  font-weight : bold; 
+  text-align: center;
+}
+
+.start_button{
+  border: none;
+  border-radius: .3vh;
+  background-color: #d11d27;
+  color: #FFFAEF  ;
+  font-size: 1.3rem;
+  height: 5rem;
+}
+
+
+
+
+
 
 /*****************************************************************************/
 /*****************************************************************************/
