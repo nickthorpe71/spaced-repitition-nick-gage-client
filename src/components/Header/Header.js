@@ -1,15 +1,15 @@
-import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
-import TokenService from '../../services/token-service'
-import UserContext from '../../contexts/UserContext'
-import './Header.css'
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import TokenService from '../../services/token-service';
+import UserContext from '../../contexts/UserContext';
+import './Header.css';
 
 class Header extends Component {
-  static contextType = UserContext
+  static contextType = UserContext;
 
   handleLogoutClick = () => {
-    this.context.processLogout()
-  }
+    this.context.processLogout();
+  };
 
   renderLogoutLink() {
     return (
@@ -25,7 +25,7 @@ class Header extends Component {
           </Link>
         </nav>
       </div>
-    )
+    );
   }
 
   renderLoginLink() {
@@ -35,7 +35,7 @@ class Header extends Component {
 
         <div className=''><Link to='/register' className='sign_up_link'>Sign up</Link></div>
       </nav>
-    )
+    );
   }
 
   render() {
@@ -43,7 +43,7 @@ class Header extends Component {
       <header className='header_nav'>
         <h1>
           <Link to='/' className='Header_logo'>
-            Codificación repetition
+            Codificación
           </Link>
         </h1>
         {TokenService.hasAuthToken()
@@ -54,4 +54,4 @@ class Header extends Component {
   }
 }
 
-export default Header
+export default Header;
