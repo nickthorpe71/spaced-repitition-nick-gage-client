@@ -33,10 +33,6 @@ export class LanguageProvider extends Component {
     };
   }
 
-  fetchLanguageAndWords = () => {
-
-  };
-
   setError = error => {
     console.error(error);
     this.setState({ error });
@@ -48,10 +44,6 @@ export class LanguageProvider extends Component {
 
   setWords = words => this.setState({ words });
   clearWords = () => this.setState({ words: {} });
-
-  componentDidMount() {
-
-  }
 
   render() {
     const value = {
