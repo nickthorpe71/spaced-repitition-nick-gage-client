@@ -40,7 +40,7 @@ body {
   font-family: "Ubuntu", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #FFFAEF ;
+  background-color: #FBEBD8 ;
   display: flex;
 
 }
@@ -59,8 +59,9 @@ body {
   display: flex;
   flex-direction: row;
   width: 100%;
-  border-bottom: solid #FBEBD8 ;
+  border-bottom: solid #E53C38 ;
   justify-content: space-between;
+  background-color: #FFFAEF;
 }
 
 h1{
@@ -217,7 +218,7 @@ input{
 }
 
 .language_header{
-  background-color: #FBEBD8;
+  background-color: #FFFAEF;
   color: #E53C38;
   margin: 0;
   height: 8rem;
@@ -243,10 +244,154 @@ input{
   height: 5rem;
 }
 
+/*****************************************************************************/
+/*****************************************************************************/
+/*****************************************************************************/
+
+/*****************************************************************/
+/******************   LEARNING VIEW   ****************************/
+/*****************************************************************/
+
+.learning_section{
+  /* height: 100%; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+}
+
+.learning_section h2{
+  margin: 0 auto 2vh auto;
+  color: #d11d27;
+  font-size: 1.25rem;
+}
+
+.learning_section h3{
+  margin: 1rem auto 0 auto;
+  color: #544A40;
+}
+
+.progress_wrapper{
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  width: 60%;
+}
+
+.progress_wrapper button {
+  flex: 1;
+  border: 0px;
+  background: none;
+  font-size: 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.progress_wrapper .progress_bar_outer_shell {
+  flex: 9;
+}
+
+.lang_question{
+  background-color: #FFFFFF;
+  color: #d11d27;
+}
+
+.submission_info_wrapper{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+  background-color: #E53C38;
+  height: 30%;
+}
+
+.submit_info{
+  color: #FFFAEF;
+  width: 60%;
+  margin-bottom:0;
+  line-height: 1.25rem;
+}
+
+.submission_button{ 
+  margin: 4vh;
+  border: 0px;
+  color: #FFF;
+  font-size: 1.25rem;
+  font-weight: bold;
+  background: #d11d27;
+  border-radius: 2.5vw;
+  box-shadow: -9px 9px #a90011;
+  width: 60%;
+  cursor: pointer;
+  height: 4rem;
+  transition: 0.5s;
+}
+.submission_button:hover{
+  transform: scale(1.05);
+  background-color: #c51b23;
+}
+
+.submission_button:active{
+  transform: scale(0.95);
+  border: 0px;
+  outline: 0px;
+}
+
+.questions_wrapper{
+  display: flex;
+  flex-direction: row;
+  height: 70%;
+}
+
+.questions_wrapper label{
+  font-weight: bold;
+  color: #544A40;
+}
+
+.lang_question{
+  margin: 0;
+  text-align: center;
+  border-radius: 1vw;
+  font-size: 1.2rem;
+  width: 70%;
+  height: 100%;
+}
+
+.lang_container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.eng_word_input_container input{
+  border-bottom: 1px solid #a90011;
+}
 
 
+/*****************************************************************************/
+/*****************************************************************************/
+/*****************************************************************************/
 
+/*****************************************************************/
+/*************************   MISC   ******************************/
+/*****************************************************************/
 
+.progress_bar_outer_shell{
+  margin: 2rem auto 2rem auto;
+  background-color: grey;
+  border-radius: 1vw;
+  background-color: #FFFAEF;
+}
+
+.progress_bar_progress_content{
+  width: 50%;
+  height: 1.8rem;
+  background-color: #d11d27;
+  border-radius: 1vw;
+}
 
 /*****************************************************************************/
 /*****************************************************************************/
@@ -263,15 +408,6 @@ input{
   .reg_log_form_wrap{
     margin: auto;
     margin-top: 2rem;
-    padding: .2rem 6.5rem .2rem 2rem ;
+    padding: .2rem 6.5rem .2rem 2rem;
   }
-}
-
-
-
-/****************/
-
-.lang_question{
-  background-color: #FFFFFF;
-  color: #d11d27;
 }
