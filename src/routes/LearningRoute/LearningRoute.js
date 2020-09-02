@@ -6,7 +6,11 @@ class LearningRoute extends Component {
   static createContext = WordContext;
 
   componentDidMount = () => {
-    LanguageApiService.getNextWord({ word_id: 1 })
+    /**
+     * @TODO tomorrow pass in the current word's next id 
+     */
+
+    LanguageApiService.getNextWord(1)
       .then(res => {
         console.log(res);
       });
