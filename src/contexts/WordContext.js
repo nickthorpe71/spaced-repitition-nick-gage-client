@@ -1,30 +1,33 @@
 import React, { Component } from 'react';
 
 const nullWord = {
-  correct_count : null,
-  id : null,
-  in_row : null, 
-  incorrect_count : null,
-  lang : {
-    name : null , 
-    total_score : null,
-  },
-  language_id : null,
-  memory_value : null,
-  next : null,
-  original : null,
-  translation : null ,
+  nextWord: null,
+  totalScore: null,
+  wordCorrectCount: null,
+  wordIncorrectCount: null,
+};
+
+const nullResObj = {
+  answer: null,
+  isCorrect: null,
+  nextWord: null,
+  totalScore: null,
+  wordCorrectCount: null,
+  wordIncorrectCount: null,
 };
 
 const WordContext = React.createContext({
   error: null,
   word: nullWord,
-  wordInput : null, 
+  resObj: nullResObj,
+  wordInput: null,
   setError: () => { },
   clearError: () => { },
   setWord: () => { },
   clearWord: () => { },
-  handleWordInputChange : () => { },
+  setResObj: () => { },
+  clearResObj: () => { },
+  handleWordInputChange: () => { },
 });
 
 export default WordContext;
@@ -35,7 +38,8 @@ export class WordProvider extends Component {
     this.state = {
       error: null,
       word: nullWord,
-      wordInput : '',
+      resObj: nullResObj,
+      wordInput: '',
     };
   }
 
@@ -43,27 +47,30 @@ export class WordProvider extends Component {
     console.error(error);
     this.setState({ error });
   };
-  
   clearError = () => this.setState({ error: null });
 
   setWord = word => this.setState({ word });
-
   clearWord = () => this.setState({ word: nullWord });
 
-  handleWordInputChange = value => this.setState({wordInput : value})  
+  setResObj = resObj => this.setState({ resObj });
+  clearResObj = () => this.setState({ resObj: nullResObj });
 
-  clearWordInput = () => this.setState({wordInput : ''})
+  handleWordInputChange = value => this.setState({ wordInput: value });
+  clearWordInput = () => this.setState({ wordInput: '' });
 
   render() {
     const value = {
       error: this.state.error,
       word: this.state.word,
-      wordInput : this.state.wordInput,
+      resObj: this.state.resObj,
+      wordInput: this.state.wordInput,
       setError: this.setState,
       clearError: this.clearError,
       setWord: this.setWord,
       clearWord: this.clearWord,
-      handleWordInputChange : this.handleWordInputChange,
+      setResObj: this.setResObj,
+      clearResObj: this.clearResObj,
+      handleWordInputChange: this.handleWordInputChange,
     };
 
     return (

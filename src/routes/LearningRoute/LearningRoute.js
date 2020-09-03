@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import LanguageApiService from '../../services/language-api-service';
 import WordContext from '../../contexts/WordContext';
-import ProgressBar from '../../components/ProgressBar/ProgressBar';
+// import ProgressBar from '../../components/ProgressBar/ProgressBar';
 
 class LearningRoute extends Component {
+  state = { submitted: false };
+
   static contextType = WordContext;
 
   componentDidMount = () => {
@@ -17,20 +19,66 @@ class LearningRoute extends Component {
     this.context.handleWordInputChange(ev.target.value);
   };
 
+  handleSubmit = async (e) => {
+    e.preventDefault();
+    const responseObj = await LanguageApiService.submitGuess(this.context.wordInput);
+    this.setState({ submitted: true });
+    this.context.setResObj(responseObj);
+    console.log(responseObj);
+
+    this.context.handleWordInputChange('');
+
+    LanguageApiService.getNextWord()
+      .then(res => {
+        this.context.setWord(res);
+      });
+  };
+
+  handleContinue = () => {
+    console.log('continue');
+  };
+
+  renderButton = () => {
+    if (!this.state.submitted) {
+      return (
+        <button className='submission_button' type='submit'>Submit your answer</button>
+      );
+    } else {
+      return (
+        <button className='submission_button' onClick={this.handleContinue} >Continue</button>
+      );
+    }
+  };
+
+  renderResponse = () => {
+    if (this.state.submitted) {
+      if (this.context.resObj.isCorrect) {
+        return (
+          <div>Correct</div>
+        );
+      } else {
+        return (
+          <div>{`Nope! The correct answer was ${this.context.resObj.answer}.`}</div>
+        );
+      }
+    } else {
+      return null;
+    }
+  };
+
   render() {
     const { word } = this.context;
-    console.log(word);
     return (
       <section className='learning_section'>
-        <p>Your total score is: {word.totalScore}</p>
-        <div className='progress_wrapper'>
+        {this.context.error && <p className='error'>{this.context.error}</p>}
+        <p className='DisplayScore'>Your total score is: {word.totalScore}</p>
+        {/* <div className='progress_wrapper'>
           <button>X</button>
           <ProgressBar
-          // progress={/*something */}
           />
-        </div>
+        </div> */}
         <h2>Translate the word:</h2><span>{word.nextWord}</span>
-        <form>
+        <form onSubmit={e => this.handleSubmit(e)}>
           <div className='questions_wrapper'>
             {/* <div className='lang_container'>
               <label htmlFor='original_word'>Spanish</label>
@@ -52,12 +100,13 @@ class LearningRoute extends Component {
                   className='lang_question'
                   required ></input>
               </div>
+              {this.renderResponse()}
             </div>
           </div>
           <div className='submission_info_wrapper'>
             <p className='total_correct_for_word submit_info'>You have answered this word correctly {word.wordCorrectCount} times. </p>
             <p className='total_incorrect_for_word submit_info'>You have answered this word incorrectly {word.wordIncorrectCount} times. </p>
-            <button className='submission_button' type='submit'>Submit your answer</button>
+            {this.renderButton()}
           </div>
         </form>
       </section>
