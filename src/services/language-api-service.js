@@ -15,8 +15,8 @@ const LanguageApiService = {
           : res.json()
       );
   },
-  getNextWord(word_id = {}) {
-    return fetch(`${config.API_ENDPOINT}/language/head/${word_id}`, {
+  getNextWord() {
+    return fetch(`${config.API_ENDPOINT}/language/head`, {
       method: 'GET',
       headers: {
         'authorization': `Bearer ${TokenService.getAuthToken()}`
