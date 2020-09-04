@@ -193,7 +193,7 @@ input{
 }
 
 .left_col{
-  background-color: #E53C38;
+  background-color: #D52C28;
   color: #FFFFFF;
   width: 60%;
   padding: 0.3rem;
@@ -211,7 +211,7 @@ input{
   list-style: none;
   margin: 0;
   padding: 0 .7rem 0 .7rem;
-  font-size: .8rem;
+  font-size: .92rem;
 }
 .word_list > li {
   margin: 0;
@@ -219,7 +219,7 @@ input{
 
 .language_header{
   background-color: #FFFAEF;
-  color: #E53C38;
+  color: #D52C28;
   margin: 0;
   height: 8rem;
   display: flex;
@@ -228,7 +228,7 @@ input{
 }
 
 .total_count_text{
-  color: #d11d27 ;
+  color: #C51C18 ;
   font-size: 1.2rem;
   margin: 1rem 0 1rem 0;
   font-weight : bold; 
@@ -303,12 +303,12 @@ input{
   align-items: center;
   position: fixed;
   bottom: 0;
-  background-color: #E53C38;
+  background-color: #D51E1E;
   height: 30%;
 }
 
 .submit_info{
-  color: #FFFAEF;
+  color: #FFFFFF;
   width: 60%;
   margin-bottom:0;
   line-height: 1.25rem;
@@ -317,10 +317,10 @@ input{
 .submission_button{ 
   margin: 4vh;
   border: 0px;
-  color: #FFF;
+  color: #d11d27;
   font-size: 1.25rem;
   font-weight: bold;
-  background: #d11d27;
+  background: #FFFAEF;
   border-radius: 2.5vw;
   box-shadow: -9px 9px #a90011;
   width: 60%;
@@ -330,7 +330,7 @@ input{
 }
 .submission_button:hover{
   transform: scale(1.05);
-  background-color: #c51b23;
+  background-color: #FBEBD8;
 }
 
 .submission_button:active{
@@ -407,7 +407,7 @@ input{
 /*****************************************************************************/
 /*****************************************************************************/
 
-@media only screen and (min-width : 800px){
+@media only screen and (min-width : 700px){
   body{
     max-width:800px;
     margin: auto;
@@ -419,5 +419,12 @@ input{
     margin: auto;
     margin-top: 2rem;
     padding: .2rem 6.5rem .2rem 2rem;
+  }
+  .left_col{
+    text-align: center;
+    font-size: 1.5rem;
+  }
+  .word_list{
+    font-size: 1.2rem;
   }
 }
