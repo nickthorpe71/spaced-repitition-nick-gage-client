@@ -1,5 +1,6 @@
 # Codificacion
-Live App:  Server Repo: https://github.com/thinkful-ei-panda/spaced-repitition-nick-gage-server
+Live App: https://codificacion.vercel.app/register 
+Server Repo: https://github.com/thinkful-ei-panda/spaced-repitition-nick-gage-server
 
 ## Demo Login Credentials
 Username: admin
