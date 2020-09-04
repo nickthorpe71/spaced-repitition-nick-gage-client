@@ -7,12 +7,12 @@ Codificacion is an application to teach the user programming terms in Spanish us
 ## Screenshots
 ### Dashboard
 The user can view words they are currently learning and their progress.
-![dashboard image](images/dash-ss.png)
+![dashboard image](public/images/dash-ss.png)
 
 ### Learning Page
 A constant flow of words that are displayed using a spaced-repetition algorithm.
 More on spaced repetition: https://en.wikipedia.org/wiki/Spaced_repetition
-![dashboard image](images/learning-ss.png)
+![learning image](public/images/learning-ss.png)
 
 ## Technology
 - React
