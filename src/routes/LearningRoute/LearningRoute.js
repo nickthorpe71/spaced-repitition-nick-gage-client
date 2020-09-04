@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import LanguageApiService from '../../services/language-api-service';
-import WordContext from '../../contexts/WordContext';
+import React, { Component } from "react";
+import LanguageApiService from "../../services/language-api-service";
+import WordContext from "../../contexts/WordContext";
 // import ProgressBar from '../../components/ProgressBar/ProgressBar';
 
 class LearningRoute extends Component {
@@ -9,10 +9,9 @@ class LearningRoute extends Component {
   static contextType = WordContext;
 
   componentDidMount = () => {
-    LanguageApiService.getNextWord()
-      .then(res => {
-        this.context.setWord(res);
-      });
+    LanguageApiService.getNextWord().then((res) => {
+      this.context.setWord(res);
+    });
   };
 
   handleInputChange = (ev) => {
@@ -21,31 +20,41 @@ class LearningRoute extends Component {
 
   handleSubmit = async (e) => {
     e.preventDefault();
-    const responseObj = await LanguageApiService.submitGuess(this.context.wordInput);
+
+    const {wordInput} = this.context;
+
+    this.context.setGuess(wordInput)
+
+    const responseObj = await LanguageApiService.submitGuess(
+      wordInput
+    );
     this.setState({ submitted: true });
     this.context.setResObj(responseObj);
     console.log(responseObj);
 
-    this.context.handleWordInputChange('');
+    this.context.clearWordInput();
 
-    LanguageApiService.getNextWord()
-      .then(res => {
-        this.context.setWord(res);
-      });
+    LanguageApiService.getNextWord().then((res) => {
+      this.context.setWord(res);
+    });
   };
 
   handleContinue = () => {
-    console.log('continue');
+    console.log("continue");
   };
 
   renderButton = () => {
     if (!this.state.submitted) {
       return (
-        <button className='submission_button' type='submit'>Submit your answer</button>
+        <button className="submission_button" type="submit">
+          Submit your answer
+        </button>
       );
     } else {
       return (
-        <button className='submission_button' onClick={this.handleContinue} >Continue</button>
+        <button className="submission_button" onClick={this.handleContinue}>
+          Try another word!
+        </button>
       );
     }
   };
@@ -53,59 +62,65 @@ class LearningRoute extends Component {
   renderResponse = () => {
     if (this.state.submitted) {
       if (this.context.resObj.isCorrect) {
-        return (
-          <div>Correct</div>
-        );
+        return(
+          <>
+            <h2>You were correct! :D</h2>
+            <div className='DisplayFeedback'>
+                  <p>The correct translation for {this.context.word.nextWord} was {this.context.resObj.answer} and you chose {this.context.theLastGuess}!</p>
+            </div>
+          </>
+        
+          
+          ) ;
       } else {
-        return (
-          <div>{`Nope! The correct answer was ${this.context.resObj.answer}.`}</div>
-        );
+            return( <>
+                     <div className='feedback_wrapper'> <h2 className='feedBack'>Good try, but not quite right :(</h2></div>
+                      <div className='DisplayFeedback'>
+                        <p>The correct translation for {this.context.word.nextWord} was {this.context.resObj.answer} and you chose {this.context.theLastGuess}!</p>
+                      </div>
+                    </>);
       }
-    } else {
-      return null;
     }
   };
 
   render() {
-    const { word } = this.context;
+    const { word, resObj } = this.context;
+
+    let totalScore = resObj.totalScore ? resObj.totalScore : word.totalScore ;
+
     return (
-      <section className='learning_section'>
+    
+      <section className="learning_section">
         {this.context.error && <p className='error'>{this.context.error}</p>}
-        <p className='DisplayScore'>Your total score is: {word.totalScore}</p>
-        {/* <div className='progress_wrapper'>
-          <button>X</button>
-          <ProgressBar
-          />
-        </div> */}
-        <h2>Translate the word:</h2><span>{word.nextWord}</span>
-        <form onSubmit={e => this.handleSubmit(e)}>
-          <div className='questions_wrapper'>
-            {/* <div className='lang_container'>
-              <label htmlFor='original_word'>Spanish</label>
-              <p
-                name='original_word'
-                className='lang_question'>
-                {word.nextWord}
-              </p>
-            </div> */}
-            <div className='lang_container'>
-              <label htmlFor='learn-guess-input'>What's the translation for this word?</label>
-              <div className='eng_word_input'>
+        <div className="DisplayScore"><p>Your total score is: {totalScore}</p></div>
+        <div className='translated_word_wrapper'><h2 className="translated_word">Translate the word:</h2><span>{this.context.word.nextWord}</span></div>
+        <form onSubmit={(e) => this.handleSubmit(e)}>
+          <div className="questions_wrapper">
+            <div className="lang_container">
+              <label htmlFor="learn-guess-input">
+                What's the translation for this word?
+              </label>
+              <div className="eng_word_input">
                 <input
                   onChange={(e) => this.handleInputChange(e)}
-                  id='learn-guess-input'
-                  type='text'
+                  id="learn-guess-input"
+                  type="text"
                   value={this.context.wordInput}
-                  name='learn-guess-input'
-                  className='lang_question'
-                  required ></input>
+                  name="learn-guess-input"
+                  className="lang_question"
+                  required
+                ></input>
               </div>
               {this.renderResponse()}
             </div>
           </div>
-          <div className='submission_info_wrapper'>
-            <p className='total_correct_for_word submit_info'>You have answered this word correctly {word.wordCorrectCount} times. </p>
-            <p className='total_incorrect_for_word submit_info'>You have answered this word incorrectly {word.wordIncorrectCount} times. </p>
+          <div className="submission_info_wrapper">
+            <p className="total_correct_for_word submit_info">
+              You have answered this word correctly {word.wordCorrectCount} times.
+            </p>
+            <p className="total_incorrect_for_word submit_info">
+              You have answered this word incorrectly {word.wordIncorrectCount} times.
+            </p>
             {this.renderButton()}
           </div>
         </form>

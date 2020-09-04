@@ -21,12 +21,16 @@ const WordContext = React.createContext({
   word: nullWord,
   resObj: nullResObj,
   wordInput: null,
+  theLastGuess : null,
+  setGuess : () =>{},
+  clearGuess : () =>{},
   setError: () => { },
   clearError: () => { },
   setWord: () => { },
   clearWord: () => { },
   setResObj: () => { },
   clearResObj: () => { },
+  clearWordInput : () => {},
   handleWordInputChange: () => { },
 });
 
@@ -40,6 +44,7 @@ export class WordProvider extends Component {
       word: nullWord,
       resObj: nullResObj,
       wordInput: '',
+      theLastGuess : '',
     };
   }
 
@@ -47,6 +52,11 @@ export class WordProvider extends Component {
     console.error(error);
     this.setState({ error });
   };
+
+  setGuess = (theLastGuess) => this.setState({theLastGuess});
+
+  clearGuess = () => this.setState({theLastGuess : ''});
+
   clearError = () => this.setState({ error: null });
 
   setWord = word => this.setState({ word });
@@ -64,13 +74,17 @@ export class WordProvider extends Component {
       word: this.state.word,
       resObj: this.state.resObj,
       wordInput: this.state.wordInput,
-      setError: this.setState,
+      theLastGuess : this.state.theLastGuess,
+      setGuess : this.setGuess,
+      clearGuess : this.clearGuess,
+      setError: this.setError,
       clearError: this.clearError,
       setWord: this.setWord,
       clearWord: this.clearWord,
+      clearWordInput : this.clearWordInput,
+      handleWordInputChange: this.handleWordInputChange,
       setResObj: this.setResObj,
       clearResObj: this.clearResObj,
-      handleWordInputChange: this.handleWordInputChange,
     };
 
     return (
