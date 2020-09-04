@@ -33,10 +33,6 @@ class LearningRoute extends Component {
     console.log(responseObj);
 
     this.context.clearWordInput();
-
-    // LanguageApiService.getNextWord().then((res) => {
-    //   this.context.setWord(res);
-    // });
   };
 
   handleContinue = () => {
@@ -123,17 +119,17 @@ class LearningRoute extends Component {
     return (
 
       <section className="learning_section">
-        {this.context.error && <p className='error'>{this.context.error}</p>}
-        <div className="DisplayScore"><p>Your total score is: {totalScore}</p></div>
+        {this.context.error && <p aria-live="polite" className='error'>{this.context.error}</p>}
+        <div aria-live="polite" className="DisplayScore"><p>Your total score is: {totalScore}</p></div>
         {this.renderTranslateWord()}
         <form onSubmit={(e) => this.handleSubmit(e)}>
-          <div className="questions_wrapper">
+          <div aria-live="polite" className="questions_wrapper">
             <div className="lang_container">
               {this.renderInputSection()}
               {this.renderResponse()}
             </div>
           </div>
-          <div className="submission_info_wrapper">
+          <div aria-live="polite" className="submission_info_wrapper">
             <p className="total_correct_for_word submit_info">
               You have answered this word correctly {word.wordCorrectCount} times.
             </p>

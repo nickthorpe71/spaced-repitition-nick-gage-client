@@ -26,9 +26,9 @@ class DashboardRoute extends Component {
       return (
         <li key={word.id}>
           <h4>{word.original}</h4>
-          <div>
-            <div className ='correct count_list_item'><span>{`correct answer count: ${word.correct_count}`}</span></div>
-            <div className ='incorrect count_list_item'><span>{`incorrect answer count: ${word.incorrect_count}`}</span></div>
+          <div aria-live="polite">
+            <div className='correct count_list_item'><span>{`correct answer count: ${word.correct_count}`}</span></div>
+            <div className='incorrect count_list_item'><span>{`incorrect answer count: ${word.incorrect_count}`}</span></div>
           </div>
         </li>
       );
@@ -40,17 +40,17 @@ class DashboardRoute extends Component {
     return (
       <section id="dashboard">
         <div className="dash_col left_col">
-          <div className='list_wrap'>
+          <div className='list_wrap' aria-live="polite">
             <h3>Words to practice</h3>
             <ul className='word_list'>
               {this.rednerWords()}
             </ul>
           </div>
         </div>
-        <div className="dash_col right_col">
+        <div className="dash_col right_col" aria-live="polite">
           <h2 className="language_header">{name}</h2>
           <p className='total_count_text'>{`Total correct answers: ${total_score}`}</p>
-          <Link to='/learn'><button  className='start_button' >Start practicing</button></Link>
+          <Link to='/learn'><button className='start_button' >Start practicing</button></Link>
         </div>
       </section>
     );
