@@ -20,3 +20,7 @@ More on spaced repetition: https://en.wikipedia.org/wiki/Spaced_repetition
 
 ### Testing 
 - Cypress
+
+## Authors
+- Gage Migan
+- Nick Thorpe 
