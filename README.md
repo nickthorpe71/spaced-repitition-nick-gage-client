@@ -1,6 +1,10 @@
 # Codificacion
 Live App:  Server Repo: https://github.com/thinkful-ei-panda/spaced-repitition-nick-gage-server
 
+## Demo Login Credentials
+Username: admin
+Password: pass
+
 ## Summary
 Codificacion is an application to teach the user programming terms in Spanish using spaced repetition.
 
