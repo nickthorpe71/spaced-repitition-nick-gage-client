@@ -122,6 +122,12 @@ h1{
   margin: 0;
 }
 
+.translated_word_wrapper span{
+  color: #d11d27;
+  font-size: 2rem;
+}
+
+
 input{
   background: transparent;
   border: none;
@@ -256,13 +262,21 @@ input{
   /* height: 100%; */
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-evenly;
+  align-items: center;
   text-align: center;
+  height: 40vh;
+}
+
+.learning_section form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .learning_section h2{
-  margin: 0 auto 2vh auto;
-  color: #d11d27;
+  margin: 0 auto;
+  color: #544A40;
   font-size: 1.25rem;
 }
 
@@ -285,6 +299,18 @@ input{
   font-size: 1.5rem;
   font-weight: bold;
   cursor: pointer;
+}
+
+.DisplayScore {
+  color: #d11d27;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.DisplayFeedback {
+  color: #d11d27;
+  font-size: 1.2rem;
+  font-weight: bold;
 }
 
 .progress_wrapper .progress_bar_outer_shell {
@@ -324,6 +350,7 @@ input{
   border-radius: 2.5vw;
   box-shadow: -9px 9px #a90011;
   width: 60%;
+  max-width: 30rem;
   cursor: pointer;
   height: 4rem;
   transition: 0.5s;
@@ -341,7 +368,7 @@ input{
 
 .questions_wrapper{
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   height: 70%;
 }
 
@@ -364,6 +391,12 @@ input{
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.eng_word_input{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .eng_word_input_container input{
@@ -399,9 +432,7 @@ input{
   font-size: 4rem;
 }
 
-.DisplayScore{
-  
-}
+
 
 /*****************************************************************************/
 /*****************************************************************************/
