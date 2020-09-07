@@ -17,7 +17,7 @@ class RegistrationRoute extends Component {
     return (
       <div className='reg_wrap' aria-live="polite">
         <p className='reg_intro'>
-          Practice learning a language with the spaced reptition revision technique.
+          Practice learning a language with the spaced repetition revision technique.
         </p>
         <section className='reg_log_form_wrap'>
           <h2 className='reg_log_header'>Sign up</h2>
